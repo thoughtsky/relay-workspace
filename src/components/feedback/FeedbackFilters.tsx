@@ -49,9 +49,9 @@ export function FeedbackFilters({ filters, onChange, resultCount }: FeedbackFilt
       <div className="flex items-center gap-2">
         {(
           [
-            { key: "source", options: FEEDBACK_SOURCES, label: "Source" },
-            { key: "status", options: FEEDBACK_STATUSES, label: "Status" },
-            { key: "topic", options: FEEDBACK_TOPICS, label: "Topic" },
+            { key: "source", options: FEEDBACK_SOURCES, label: "Source", all: "All sources" },
+            { key: "status", options: FEEDBACK_STATUSES, label: "Status", all: "All statuses" },
+            { key: "topic", options: FEEDBACK_TOPICS, label: "Topic", all: "All topics" },
           ] as const
         ).map((filter) => (
           <Select
@@ -60,12 +60,13 @@ export function FeedbackFilters({ filters, onChange, resultCount }: FeedbackFilt
             onValueChange={(value) => onChange({ ...filters, [filter.key]: value })}
           >
             <SelectTrigger className="h-8 flex-1 text-[12px]" aria-label={filter.label}>
-              <SelectValue placeholder={filter.label} />
+              <SelectValue placeholder={filter.all} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all" className="text-[13px]">
-                All {filter.label.toLowerCase()}s
+                {filter.all}
               </SelectItem>
+
               {filter.options.map((option) => (
                 <SelectItem key={option} value={option} className="text-[13px]">
                   {labelise(option)}
