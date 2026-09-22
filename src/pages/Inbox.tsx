@@ -83,7 +83,11 @@ export default function Inbox() {
           />
         </section>
         <section className="min-w-0 flex-1 bg-surface">
-          <FeedbackDetail item={selectedItem} onDelete={handleDelete} />
+          <FeedbackDetail
+            item={selectedItem}
+            onDelete={handleDelete}
+            onStatusChange={handleStatusChange}
+          />
         </section>
       </div>
     </div>
