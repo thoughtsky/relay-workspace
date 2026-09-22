@@ -1,5 +1,5 @@
 import { seedFeedback } from "@/data/feedback";
-import type { FeedbackItem } from "@/types/feedback";
+import type { FeedbackItem, FeedbackStatus } from "@/types/feedback";
 
 /**
  * Local, in-memory service boundary for feedback.
@@ -15,6 +15,11 @@ export const feedbackService = {
 
   getFeedback(id: string): FeedbackItem | undefined {
     return items.find((item) => item.id === id);
+  },
+
+  updateFeedbackStatus(id: string, status: FeedbackStatus): FeedbackItem[] {
+    items = items.map((item) => (item.id === id ? { ...item, status } : item));
+    return [...items];
   },
 
   deleteFeedback(id: string): FeedbackItem[] {

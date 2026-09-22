@@ -4,7 +4,7 @@ import { FeedbackFilters, type FilterState } from "@/components/feedback/Feedbac
 import { FeedbackList } from "@/components/feedback/FeedbackList";
 import { FeedbackDetail } from "@/components/feedback/FeedbackDetail";
 import { feedbackService } from "@/services/feedback-service";
-import type { FeedbackItem } from "@/types/feedback";
+import type { FeedbackItem, FeedbackStatus } from "@/types/feedback";
 
 const emptyFilters: FilterState = { query: "", source: "all", status: "all", topic: "all" };
 
@@ -51,6 +51,15 @@ export default function Inbox() {
     setSelectedId(nextVisible[0]?.id ?? null);
   }
 
+  function handleStatusChange(id: string, status: FeedbackStatus) {
+    const updated = feedbackService.updateFeedbackStatus(id, status);
+    const nextVisible = updated.filter((item) => matches(item, filters));
+    setItems(updated);
+    setSelectedId(
+      nextVisible.some((item) => item.id === id) ? id : (nextVisible[0]?.id ?? null),
+    );
+  }
+
   return (
     <div className="flex h-screen min-w-0 flex-1 flex-col bg-background">
       <InboxHeader
@@ -74,7 +83,11 @@ export default function Inbox() {
           />
         </section>
         <section className="min-w-0 flex-1 bg-surface">
-          <FeedbackDetail item={selectedItem} onDelete={handleDelete} />
+          <FeedbackDetail
+            item={selectedItem}
+            onDelete={handleDelete}
+            onStatusChange={handleStatusChange}
+          />
         </section>
       </div>
     </div>
