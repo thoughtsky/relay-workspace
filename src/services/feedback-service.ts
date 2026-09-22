@@ -17,6 +17,11 @@ export const feedbackService = {
     return items.find((item) => item.id === id);
   },
 
+  updateFeedbackStatus(id: string, status: FeedbackStatus): FeedbackItem[] {
+    items = items.map((item) => (item.id === id ? { ...item, status } : item));
+    return [...items];
+  },
+
   deleteFeedback(id: string): FeedbackItem[] {
     items = items.filter((item) => item.id !== id);
     return [...items];

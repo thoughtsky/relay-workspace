@@ -4,18 +4,23 @@ import { formatLongDate, statusVariant } from "@/components/feedback/feedback-fo
 
 interface FeedbackMetadataProps {
   item: FeedbackItem;
+  showStatus?: boolean;
 }
 
-export function FeedbackMetadata({ item }: FeedbackMetadataProps) {
+export function FeedbackMetadata({ item, showStatus = true }: FeedbackMetadataProps) {
   const rows: { label: string; value: React.ReactNode }[] = [
-    {
-      label: "Status",
-      value: (
-        <Badge variant={statusVariant(item.status)} className="px-1.5 py-0 text-[11px]">
-          {item.status}
-        </Badge>
-      ),
-    },
+    ...(showStatus
+      ? [
+          {
+            label: "Status",
+            value: (
+              <Badge variant={statusVariant(item.status)} className="px-1.5 py-0 text-[11px]">
+                {item.status}
+              </Badge>
+            ),
+          },
+        ]
+      : []),
     {
       label: "Source",
       value: (

@@ -1,8 +1,14 @@
 import { MessagesSquare, MoreHorizontal, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,14 +16,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { FeedbackMetadata } from "@/components/feedback/FeedbackMetadata";
-import type { FeedbackItem } from "@/types/feedback";
+import { FEEDBACK_STATUSES, type FeedbackItem, type FeedbackStatus } from "@/types/feedback";
 
 interface FeedbackDetailProps {
   item: FeedbackItem | null;
   onDelete: (id: string) => void;
+  onStatusChange: (id: string, status: FeedbackStatus) => void;
 }
 
-export function FeedbackDetail({ item, onDelete }: FeedbackDetailProps) {
+const labelise = (value: string) => value.charAt(0).toUpperCase() + value.slice(1);
+
+export function FeedbackDetail({ item, onDelete, onStatusChange }: FeedbackDetailProps) {
   if (!item) {
     return (
       <EmptyState
@@ -40,6 +49,21 @@ export function FeedbackDetail({ item, onDelete }: FeedbackDetailProps) {
           </p>
         </div>
         <div className="flex shrink-0 items-center gap-1">
+          <Select
+            value={item.status}
+            onValueChange={(value) => onStatusChange(item.id, value as FeedbackStatus)}
+          >
+            <SelectTrigger className="h-8 w-[120px] text-[12px]" aria-label="Feedback status">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {FEEDBACK_STATUSES.map((status) => (
+                <SelectItem key={status} value={status} className="text-[13px]">
+                  {labelise(status)}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
@@ -69,26 +93,23 @@ export function FeedbackDetail({ item, onDelete }: FeedbackDetailProps) {
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto px-6 py-5">
-        <Tabs defaultValue="feedback">
-          <TabsList className="h-8">
-            <TabsTrigger value="feedback" className="text-[12.5px]">
-              Feedback
-            </TabsTrigger>
-            <TabsTrigger value="details" className="text-[12.5px]">
-              Details
-            </TabsTrigger>
-          </TabsList>
+        <section className="max-w-2xl">
+          <h3 className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+            Customer feedback
+          </h3>
+          <p className="mt-3 whitespace-pre-line text-[13.5px] leading-7 text-foreground/90">
+            {item.message}
+          </p>
+        </section>
 
-          <TabsContent value="feedback" className="mt-4 max-w-2xl">
-            <p className="whitespace-pre-line text-[13.5px] leading-7 text-foreground/90">
-              {item.message}
-            </p>
-          </TabsContent>
-
-          <TabsContent value="details" className="mt-4 max-w-md">
-            <FeedbackMetadata item={item} />
-          </TabsContent>
-        </Tabs>
+        <section className="mt-8 max-w-md">
+          <h3 className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+            Details
+          </h3>
+          <div className="mt-3">
+            <FeedbackMetadata item={item} showStatus={false} />
+          </div>
+        </section>
       </div>
     </div>
   );
