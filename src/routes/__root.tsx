@@ -124,8 +124,13 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <TooltipProvider delayDuration={300}>
+        <div className="flex h-screen w-full overflow-hidden bg-background text-foreground antialiased">
+          <AppSidebar />
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </div>
+      </TooltipProvider>
     </QueryClientProvider>
   );
 }
