@@ -1,5 +1,5 @@
 import { seedFeedback } from "@/data/feedback";
-import type { FeedbackItem } from "@/types/feedback";
+import type { FeedbackItem, FeedbackStatus } from "@/types/feedback";
 
 /**
  * Local, in-memory service boundary for feedback.
