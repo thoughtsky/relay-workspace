@@ -18,10 +18,13 @@ The inbox is the working surface of the product. It lets a team:
 - see everything that has come in, in one scrollable list;
 - narrow the list by search, source, status and topic;
 - read the full message with the customer, role, company and date alongside it;
+- change an item's status as it moves through triage;
 - remove items that are not useful.
 
 Statuses (`new`, `reviewed`, `planned`, `archived`) describe how far an item has moved
-through triage. Topics group items into product areas so themes can be spotted.
+through triage and can be changed from the detail panel. Status changes are handled by
+the local in-memory service and reset when the browser is refreshed. Source and topic
+are read-only metadata. Topics group items into product areas so themes can be spotted.
 
 This repository is a workshop starter: data is seeded locally and several product
 behaviours are deliberately missing.

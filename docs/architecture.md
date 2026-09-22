@@ -26,11 +26,12 @@ data directly; they call the service. It currently exposes:
 
 - `listFeedback()`
 - `getFeedback(id)`
+- `updateFeedbackStatus(id, status)`
 - `deleteFeedback(id)`
 
-The implementation is local and in memory. Deleting an item removes it from the running
-session only — a browser refresh restores the seeded data. There is no local-storage or
-other browser-storage persistence.
+The implementation is local and in memory. Deleting an item or changing its status
+affects the running session only — a browser refresh restores the seeded data. There is
+no local-storage or other browser-storage persistence. Source and topic are read-only.
 
 ## Scope
 
