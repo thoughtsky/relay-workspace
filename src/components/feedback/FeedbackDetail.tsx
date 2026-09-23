@@ -9,12 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { FeedbackMetadata } from "@/components/feedback/FeedbackMetadata";
 import { FEEDBACK_STATUSES, type FeedbackItem, type FeedbackStatus } from "@/types/feedback";
 
