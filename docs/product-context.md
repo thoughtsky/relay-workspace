@@ -26,5 +26,5 @@ through triage and can be changed from the detail panel. Status changes are hand
 the local in-memory service and reset when the browser is refreshed. Source and topic
 are read-only metadata. Topics group items into product areas so themes can be spotted.
 
-This repository is a workshop starter: data is seeded locally and several product
-behaviours are deliberately missing.
+Data is seeded locally and held in memory; a browser refresh restores the seeded
+state.
