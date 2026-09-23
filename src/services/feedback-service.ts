@@ -3,7 +3,7 @@ import type { FeedbackItem, FeedbackStatus } from "@/types/feedback";
 
 /**
  * Local, in-memory service boundary for feedback.
- * The starter product supports loading and deleting only.
+ * Supports loading items, updating an item's status and deleting items.
  * There is no persistence: a browser refresh restores the seeded data.
  */
 let items: FeedbackItem[] = [...seedFeedback];

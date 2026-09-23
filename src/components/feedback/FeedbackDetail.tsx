@@ -1,4 +1,4 @@
-import { MessagesSquare, MoreHorizontal, Trash2 } from "lucide-react";
+import { MessagesSquare, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
