@@ -72,17 +72,6 @@ export function FeedbackDetail({ item, onDelete, onStatusChange }: FeedbackDetai
             </TooltipTrigger>
             <TooltipContent>Delete feedback</TooltipContent>
           </Tooltip>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="size-8" aria-label="More actions">
-                <MoreHorizontal />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem className="text-[13px]">Copy reference</DropdownMenuItem>
-              <DropdownMenuItem className="text-[13px]">Open customer profile</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
       </div>
 

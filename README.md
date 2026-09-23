@@ -1,29 +1,26 @@
-# Welcome to your Lovable project
+# Relay
 
-This project was built with [Lovable](https://lovable.dev).
+Relay is a customer-feedback workspace for product managers and designers. It
+collects feedback from support conversations, customer interviews, sales calls and
+surveys into a single inbox where a team can search, filter by source, status and
+topic, read the full message, update an item's triage status and remove items.
 
-## Build with Lovable
+Data is seeded locally and held in memory; status changes and deletions are lost on
+refresh. There is no backend, database, authentication or external API.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## Stack
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- React 19 + TypeScript
+- TanStack Start (file-based routing, Vite 7)
+- Tailwind CSS v4 with shadcn/ui components on Radix
+- Lucide icons
 
-## Development
+## Getting started
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Requires Node.js and npm.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+npm ci        # install dependencies (reproducible, from package-lock.json)
+npm run dev   # run the app locally
+npm run build # production build
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
