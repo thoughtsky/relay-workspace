@@ -38,9 +38,3 @@ no local-storage or other browser-storage persistence. Source and topic are read
 Backend contracts, persistence and database changes are **outside the scope of frontend
 contributions**. Work in this repository changes the interface and the local service
 implementation; it does not define or assume server behaviour.
-
-## Deliberate gaps
-
-Delete confirmation, follow-up/saved feedback, sorting, assignments, internal notes,
-backend persistence, authentication and analytics charts are intentionally absent. They
-are workshop exercises.

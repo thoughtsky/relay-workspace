@@ -34,8 +34,8 @@ sparingly. Controls are 8 units (32px) tall.
 `Button` (including `size="icon"`), `Badge` (status and `muted` variants), `Input`,
 `Select`, `Tabs`, `DropdownMenu`, `Tooltip`, `AlertDialog`, `EmptyState`.
 
-`AlertDialog` is present in the shared layer but intentionally unused; it is reserved
-for a later workshop exercise.
+`AlertDialog` is available for confirmation flows; reach for it before building a
+custom modal.
 
 ## Application components
 

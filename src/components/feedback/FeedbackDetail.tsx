@@ -1,4 +1,4 @@
-import { MessagesSquare, MoreHorizontal, Trash2 } from "lucide-react";
+import { MessagesSquare, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -9,12 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { FeedbackMetadata } from "@/components/feedback/FeedbackMetadata";
 import { FEEDBACK_STATUSES, type FeedbackItem, type FeedbackStatus } from "@/types/feedback";
 
@@ -78,17 +72,6 @@ export function FeedbackDetail({ item, onDelete, onStatusChange }: FeedbackDetai
             </TooltipTrigger>
             <TooltipContent>Delete feedback</TooltipContent>
           </Tooltip>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="size-8" aria-label="More actions">
-                <MoreHorizontal />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem className="text-[13px]">Copy reference</DropdownMenuItem>
-              <DropdownMenuItem className="text-[13px]">Open customer profile</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
       </div>
 
